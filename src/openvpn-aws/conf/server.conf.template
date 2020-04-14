@@ -1,0 +1,33 @@
+server ${OPENVPN_SERVER_IP} ${OPENVPN_SERVER_MASK}
+port ${OPENVPN_PORT}
+proto tcp
+
+dev tun
+
+ca pki/ca.crt
+cert pki/server.crt
+key pki/server.key
+dh pki/dh2048.pem
+crl-verify pki/crl.pem
+duplicate-cn
+
+topology subnet
+ifconfig-pool-persist ipp.txt
+
+keepalive 10 120
+
+compress lz4-v2
+push "compress lz4-v2"
+
+push "dhcp-option DNS ${OPENVPN_DNS_SERVER}"
+push "route ${OPENVPN_REMOTE_IP} ${OPENVPN_REMOTE_MASK}"
+
+user nobody
+group nogroup
+
+persist-key
+persist-tun
+
+status openvpn-status.log
+
+verb 3
