@@ -81,8 +81,10 @@ namespace :image do
     t.work_directory = 'build/images'
 
     t.copy_spec = [
-        "src/openvpn-aws/Dockerfile",
+        "src/openvpn-aws/conf",
+        "src/openvpn-aws/scripts",
         "src/openvpn-aws/docker-entrypoint.sh",
+        "src/openvpn-aws/Dockerfile",
     ]
 
     t.repository_name = 'openvpn-aws'

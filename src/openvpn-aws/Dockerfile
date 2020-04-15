@@ -4,7 +4,7 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/reposi
     apk add --update --no-cache \
         gettext \
         openvpn \
-        iptables \
+        iptables
 
 EXPOSE 1194
 
