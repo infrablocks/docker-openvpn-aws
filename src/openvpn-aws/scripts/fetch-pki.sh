@@ -23,3 +23,6 @@ fetch_file_from_s3 \
     "${S3_BUCKET_REGION}" \
     "${OPENVPN_CRL_FILE_S3_OBJECT_PATH}" \
     /etc/openvpn/pki/crl.pem
+
+chmod 700 /etc/openvpn/pki
+chmod 600 /etc/openvpn/pki/server.key

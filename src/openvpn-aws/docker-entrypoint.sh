@@ -12,8 +12,7 @@ if [ ! -c /dev/net/tun ]; then
     mknod /dev/net/tun c 10 200
 fi
 
-# Render server config template
-echo "Rendering open server config file."
+echo "Rendering openvpn server config file."
 envsubst \
   < /etc/openvpn/server.conf.template \
   > /etc/openvpn/server.conf
