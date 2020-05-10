@@ -12,7 +12,6 @@ crl-verify pki/crl.pem
 duplicate-cn
 
 topology subnet
-ifconfig-pool-persist ipp.txt
 
 keepalive 10 120
 
