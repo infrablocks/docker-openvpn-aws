@@ -4,7 +4,7 @@
 set -e
 
 # Route IPs through the VPN
-iptables -t nat -A POSTROUTING -s "${VPN_REMOTE_CIDR}" -o eth0 -j MASQUERADE
+iptables -t nat -A POSTROUTING -s "${OPENVPN_REMOTE_CIDR}" -o eth0 -j MASQUERADE
 
 # Create tunnel device
 mkdir -p /dev/net

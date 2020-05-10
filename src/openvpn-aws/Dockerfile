@@ -1,4 +1,4 @@
-FROM infrablocks/alpine-aws-s3-config:0.14.0
+FROM infrablocks/alpine-aws-s3-config:0.15.0
 
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/repositories && \
     apk add --update --no-cache \
