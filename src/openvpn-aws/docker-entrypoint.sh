@@ -17,6 +17,8 @@ envsubst \
   < /etc/openvpn/server.conf.template \
   > /etc/openvpn/server.conf
 
+[ "$DEBUG" = "yes" ] && cat /etc/openvpn/server.conf
+
 echo "Running openvpn"
 cd /etc/openvpn
 exec openvpn \
