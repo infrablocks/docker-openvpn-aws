@@ -13,6 +13,11 @@ if [ ! -c /dev/net/tun ]; then
 fi
 
 echo "Rendering openvpn server config file."
+if [ -f "$OPENVPN_ADDITIONAL_CONFIGURATION_PATH" ]; then
+    OPENVPN_ADDITIONAL_CONFIGURATION="$(cat OPENVPN_ADDITIONAL_CONFIGURATION_PATH)"
+    export OPENVPN_ADDITIONAL_CONFIGURATION
+fi
+
 envsubst \
   < /etc/openvpn/server.conf.template \
   > /etc/openvpn/server.conf
