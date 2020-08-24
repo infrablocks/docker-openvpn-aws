@@ -6,6 +6,7 @@ require 'rake_terraform'
 require 'yaml'
 require 'git'
 require 'semantic'
+require 'rspec/core/rake_task'
 
 require_relative 'lib/version'
 
@@ -22,6 +23,8 @@ def latest_tag
     Semantic::Version.new(tag.name)
   end.max
 end
+
+task :default => :'test:integration'
 
 RakeSSH.define_key_tasks(
     namespace: :deploy_key,
@@ -95,6 +98,12 @@ namespace :image do
 
     t.tags = [latest_tag.to_s, 'latest']
   end
+end
+
+namespace :test do
+  RSpec::Core::RakeTask.new(:integration => [
+      'image:build'
+  ])
 end
 
 namespace :version do
