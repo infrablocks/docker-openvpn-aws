@@ -17,7 +17,7 @@ describe 'openvpn' do
 
     it "includes the openvpn command" do
       expect(command('openvpn --version').stdout)
-          .to(match(/2.4.9/))
+          .to(match(/2.4.11/))
     end
   end
 
