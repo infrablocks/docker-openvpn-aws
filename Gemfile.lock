@@ -41,7 +41,7 @@ GEM
     faraday-excon (1.1.0)
     faraday-net_http (1.0.1)
     faraday-net_http_persistent (1.1.0)
-    git (1.9.1)
+    git (1.10.0)
       rchardet (~> 1.8)
     hamster (3.0.0)
       concurrent-ruby (~> 1.0)
@@ -151,7 +151,7 @@ PLATFORMS
 
 DEPENDENCIES
   docker-api (~> 1.34)
-  git (~> 1.9)
+  git (~> 1.10)
   os (~> 1.1)
   rake (~> 13.0)
   rake_circle_ci (~> 0.9)
