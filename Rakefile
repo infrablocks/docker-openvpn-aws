@@ -130,6 +130,8 @@ namespace :image do
     t.credentials = YAML.load_file(
         "config/secrets/dockerhub/credentials.yaml")
 
+    t.platform = 'linux/amd64'
+
     t.tags = [latest_tag.to_s, 'latest']
   end
 end
@@ -137,7 +139,9 @@ end
 namespace :test do
   RSpec::Core::RakeTask.new(:integration => [
       'image:build'
-  ])
+  ]) do |t|
+    t.rspec_opts = ["--format", "documentation"]
+  end
 end
 
 namespace :version do
