@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'openvpn' do
   image = 'openvpn-aws:latest'
   extra = {
-      'Entrypoint' => '/bin/sh'
+    'Entrypoint' => '/bin/sh'
   }
 
   before(:all) do
@@ -15,9 +17,9 @@ describe 'openvpn' do
   describe 'command' do
     after(:all, &:reset_docker_backend)
 
-    it "includes the openvpn command" do
+    it 'includes the openvpn command' do
       expect(command('openvpn --version').stdout)
-          .to(match(/2.4.11/))
+        .to(match(/2.4.12/))
     end
   end
 
