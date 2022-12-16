@@ -42,9 +42,16 @@ task default: %i[
 ]
 
 namespace :encryption do
+  namespace :directory do
+    desc 'Ensure CI secrets directory exists.'
+    task :ensure do
+      FileUtils.mkdir_p('config/secrets/ci')
+    end
+  end
+
   namespace :passphrase do
-    desc 'Generate encryption passphrase for CI GPG key'
-    task :generate do
+    desc 'Generate encryption passphrase used by CI.'
+    task generate: ['directory:ensure'] do
       File.write('config/secrets/ci/encryption.passphrase',
                  SecureRandom.base64(36))
     end
@@ -69,6 +76,16 @@ namespace :keys do
     )
   end
 end
+
+namespace :secrets do
+  desc 'Regenerate all generatable secrets.'
+  task regenerate: %w[
+    encryption:passphrase:generate
+    keys:deploy:generate
+    keys:gpg:generate
+  ]
+end
+
 
 RakeCircleCI.define_project_tasks(
   namespace: :circle_ci,
