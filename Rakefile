@@ -86,7 +86,6 @@ namespace :secrets do
   ]
 end
 
-
 RakeCircleCI.define_project_tasks(
   namespace: :circle_ci,
   project_slug: 'github/infrablocks/docker-openvpn-aws'
