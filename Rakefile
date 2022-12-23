@@ -143,11 +143,11 @@ namespace :image do
   ) do |t|
     t.work_directory = 'build/images'
 
-    t.copy_spec = [
-      'src/openvpn-aws/conf',
-      'src/openvpn-aws/scripts',
-      'src/openvpn-aws/docker-entrypoint.sh',
-      'src/openvpn-aws/Dockerfile'
+    t.copy_spec = %w[
+      src/openvpn-aws/conf
+      src/openvpn-aws/scripts
+      src/openvpn-aws/docker-entrypoint.sh
+      src/openvpn-aws/Dockerfile
     ]
 
     t.repository_name = 'openvpn-aws'
@@ -171,7 +171,7 @@ namespace :test do
     task check: [:rubocop]
 
     desc 'Attempt to automatically fix issues with the test code'
-    task fix: [:'rubocop:auto_correct']
+    task fix: [:'rubocop:autocorrect_all']
   end
 
   RSpec::Core::RakeTask.new(
