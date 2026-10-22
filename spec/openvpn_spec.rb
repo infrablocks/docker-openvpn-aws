@@ -5,7 +5,7 @@ require 'spec_helper'
 describe 'openvpn' do
   image = 'openvpn-aws:latest'
   extra = {
-    'Entrypoint' => '/bin/sh'
+    'Entrypoint' => ['/bin/sh']
   }
 
   before(:all) do
